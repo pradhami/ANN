@@ -12,3 +12,7 @@ conda create --prefix ./envs jupyterlab=0.35 matplotlib=3.1 numpy=1.16
 ```bash
 conda activate ./envs
 ```
+
+# Reference
+
+* [Confa Environment Commands](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
