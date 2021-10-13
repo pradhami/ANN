@@ -1,8 +1,9 @@
 from yaml import parse
 from src.utils.common import read_config
 from src.utils.data_mgmt import get_data
-from src.utils.model import create_model
+from src.utils.model import create_model, save_model
 import argparse
+import os
 
 def training(config_path):
     config = read_config(config_path)
@@ -18,6 +19,13 @@ def training(config_path):
     EPOCHS = config["params"]["epochs"]
     history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=config.VERBOSE)
 
+
+    MODEL_DIR = config["artifacts"]["model_dir"]
+    MODEL_NAME = config["artifacts"]["model_name"]
+    ARTIFACTS_DIR = config["artifacts"]["artifacts_dir"]
+    MODEL_DIR_PATH = os.path.join(ARTIFACTS_DIR,MODEL_DIR)
+    os.mkdir(MODEL_DIR_PATH, exist_ok=True)
+    save_model(model, MODEL_NAME, MODEL_DIR_PATH)
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()

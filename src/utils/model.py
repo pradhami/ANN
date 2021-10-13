@@ -1,5 +1,7 @@
 import tensorflow as tf
 from src.utils.common import read_config
+import time
+import os
 
 def create_model(OPTIMIZER, LOSS_FUNCTION, METRICS, NUM_CLASSES):
     LAYERS = [
@@ -17,3 +19,12 @@ def create_model(OPTIMIZER, LOSS_FUNCTION, METRICS, NUM_CLASSES):
                                 )
     
     return(model_classifier)
+
+def get_unique_filename(filename):
+        unique_filename = time.strftime(f"%Y%m%d_%H%M%S_{filename}")
+        return unique_filename
+
+def save_model(model, model_name, model_dir):
+        unique_filename = get_unique_filename(model_name)
+        path_to_model = os.path.join(model_dir, unique_filename)
+        model.save(path_to_model)
