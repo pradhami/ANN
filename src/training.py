@@ -17,18 +17,18 @@ def training(config_path):
     model = create_model(OPTIMIZER, LOSS_FUNCTION, METRICS, NUM_CLASSES)
 
     EPOCHS = config["params"]["epochs"]
-    history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=config.VERBOSE)
+    history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=0)
 
 
     MODEL_DIR = config["artifacts"]["model_dir"]
     MODEL_NAME = config["artifacts"]["model_name"]
     ARTIFACTS_DIR = config["artifacts"]["artifacts_dir"]
     MODEL_DIR_PATH = os.path.join(ARTIFACTS_DIR,MODEL_DIR)
-    os.mkdir(MODEL_DIR_PATH, exist_ok=True)
+    os.makedirs(MODEL_DIR_PATH, exist_ok=True)
     save_model(model, MODEL_NAME, MODEL_DIR_PATH)
 
 if __name__ == '__main__':
     args = argparse.ArgumentParser()
-    args.add_argument('"--config',"-c",default="config.yaml")
+    args.add_argument("--config","-c", default="config.yaml")
     parsed_arg = args.parse_args()
     training(config_path = parsed_arg.config)

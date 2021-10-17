@@ -1,5 +1,5 @@
 import tensorflow as tf
-from src.utils.common import read_config
+from utils.common import read_config
 import time
 import os
 

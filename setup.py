@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 PROJECT_NAME = "src"
-USER_NAME = "Amit Kumar Pradhan"
+USER_NAME = "pradhami"
 USER_EMAIL = "amitpradhands@gmail.com"
 
 setuptools.setup(
@@ -25,7 +25,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    packages=["src"],
     python_requires=">=3.6",
     install_requires=[
                     'tensorflow',
