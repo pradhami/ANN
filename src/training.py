@@ -17,7 +17,7 @@ def training(config_path):
     model = create_model(OPTIMIZER, LOSS_FUNCTION, METRICS, NUM_CLASSES)
 
     EPOCHS = config["params"]["epochs"]
-    history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=0)
+    history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=1)
 
 
     MODEL_DIR = config["artifacts"]["model_dir"]
