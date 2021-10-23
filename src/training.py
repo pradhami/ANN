@@ -2,6 +2,7 @@ from yaml import parse
 from src.utils.common import read_config
 from src.utils.data_mgmt import get_data
 from src.utils.model import create_model, save_model
+from src.utils.callbacks import get_callbacks
 import argparse
 import os
 
@@ -16,8 +17,10 @@ def training(config_path):
     NUM_CLASSES = config["params"]["no_classes"]
     model = create_model(OPTIMIZER, LOSS_FUNCTION, METRICS, NUM_CLASSES)
 
+    CALLBACK_LIST = get_callbacks(config, x_train)
+
     EPOCHS = config["params"]["epochs"]
-    history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=1)
+    history = model.fit(x_train, y_train, epochs=EPOCHS, validation_data=(x_valid,y_valid), verbose=1, callbacks=CALLBACK_LIST)
 
 
     MODEL_DIR = config["artifacts"]["model_dir"]
