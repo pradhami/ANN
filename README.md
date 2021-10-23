@@ -22,3 +22,8 @@ conda activate ./envs
 ```bash
 pip install -e .
 ```
+# Tensorboard
+
+```bash
+tensorboard --logdir=<log_dir_path>
+```
