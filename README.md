@@ -16,3 +16,9 @@ conda activate ./envs
 # Reference
 
 * [Confa Environment Commands](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+# Install Local packages
+
+```bash
+pip install -e .
+```
